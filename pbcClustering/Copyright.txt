@@ -1,0 +1,44 @@
+This package contains a set of matlab functions (R2009b) for  
+behavioural data analysis and an artificial test data set.
+For a description of the analysing approach see:
+'Identifying Prototypical Components in Behaviour using Clustering
+Algorithms' by Elke Braun, Bart Geurten and Martin Egelhaaf
+---------------------------------------------------------------------
+
+Copyright (C) 2009 Elke Braun, Bart Geurten, Bielefeld University
+All Rights Reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Disclaimer
+----------
+The Bielefeld University and the authors make no representations
+about the suitability or fitness of this software for any purpose.
+It is provided "as is" without express or implied warranty.
+---------------------------------------------------------------------
+
+Author
+------
+Elke Braun
+Bart Geurten
+Dept. of Neurobiology
+
+Postfach 10 01 31
+D-33501 Bielefeld
+
+http://www.uni-bielefeld.de/biologie/Neurobiology/
+
+elke.braun@uni-bielefeld.de
+bart.geurten@uni-bielefeld.de

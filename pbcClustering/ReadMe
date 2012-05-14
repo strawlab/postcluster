@@ -1,0 +1,125 @@
+This package contains a set of matlab functions (R2009b) for  
+behavioural data analysis and an artificial test data set.
+For a description of the analysing approach see:
+'Identifying Prototypical Components in Behaviour using Clustering
+Algorithm' by Elke Braun, Bart Geurten and Martin Egelhaaf
+
+For all the included software:
+ Copyright (C) 2009,  Bart Geurten, Elke Braun, Bielefeld University
+
+ This program is free software; you can redistribute it and/or modify 
+ it under the terms of the GNU General Public License as published 
+ by the Free Software Foundation; either version 2 of the License, 
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, 
+ but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ See the GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License 
+ along with this program; if not, write to the Free Software Foundation,
+ Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+
+It follows the list of included functions together with their short
+description.
+
+***************************************************************************
+* Data:
+* 2 dimensional test data
+***************************************************************************
+artData.dat	         2 dimensional data set for testing
+
+
+***************************************************************************
+* Kml:
+* The used accelerated k-means C implementation, as described in
+*  Kanungo, Mount, Netanyahu, Piatko, Silverman, et.al.,
+*  'An efficiant k-means clustering algorithm: Analysis ans implementation.'
+*  IEEE Trans. Pattern Analysis and Machine Intelligence, 24:881-892.
+*
+* Results do not differ from the
+* matlab implementation, but it is very much faster due to the C implementation
+* and an accelerating algorithm
+***************************************************************************
+
+pbc_kmLocal.cpp          Matlab Interface to C++ Implementation of fast 
+                         local kmeans approach of David Mount  
+pbc_kmLocal.mexglx       Interface binary, currently compiled for Linux
+                         using gcc Debian version 4.3.2-1.1 
+kmlLib                   Original C++ Implementation by David Mount together
+                         with modified interface function.
+
+
+***************************************************************************
+* Eval:
+* Utilities for evaluating clustering results
+***************************************************************************
+Hungarian.m              matlab implementation of Hungarian algorithm by 
+                         Alex Melin, downloaded from 
+                      http://www.mathworks.com/matlabcentral/fileexchange/11609
+pbc_calcCentroidInstability.m  
+                         Calculate instability values based on
+                         matching costs calculated by pbc_matchCentroids()
+pbc_calcClusterQuality.m
+                         Calculate quality values for individual clusters
+                         of given set based on IDX and SUMD given by k-means   
+pbc_calcMeanClusterQuality.m
+                         Calculate mean quality values of several sets
+                         of centroids.
+pbc_calcOccurrences.m
+			 Calculates relative occurrences for the different 
+		         ids within the cluster assignment data.
+pbc_getClusterMeanAndStd.m
+			 Calculates cluster mean value and std from
+                         feature data points and k-means assignment data.
+pbc_matchCentroids.m
+                         Matches several sets of centroids by minimizing
+                         global matching costs using Hungarian() 
+
+***************************************************************************
+* IdSequences
+* Utilities for analysing the sequence of class ids resulting from
+* assigning the class labels identified by the clustering to the sequence
+* of behavioural data
+***************************************************************************
+
+pbc_calcDurations.m
+                         Calculates the length of subsequences of constant id
+                         within the whole sequence of indices
+pbc_calcIndForSequence.m
+                         Used by pbc_calcSequenceProbs() to calculate
+			 1 dim. index assigned to a current id sequence
+pbc_calcSequenceProbs.m 
+                         Calculates relative occurrence/probabilities for 
+			 all different subsequences of indices of given length
+                         within the whole sequence of indices. 
+                         Uses pbc_calcIndForSequence() to assign a 1 dim. index
+		         to each subsequence, use pbc_recalcSequenceFromInd()
+                         for reverse coding 
+pbc_findSubSeqStarts.m
+                         Finds given id subsequences within whole 
+			 sequence and returns their starting position/index 
+                         within the sequence
+pbc_getDiffIdSequence.m
+                         Extracts sequence of changing ids from idSequence by 
+		         ignoring parts of constant id. 
+pbc_recalcSequenceFromInd.m 
+	                 Reverse function to pbc_calcIndForSequence(), restores
+                         id sequence from 1 dim. index.
+pbc_smoothIDX.m
+		         Smoothes IDX file, index sequences, by identifying 
+		         subsequences whose lengths are shorter than given
+                         trustedLength and exchanging the originals ids
+                         by the ids of the surrounding trusted sequences.
+
+
+***************************************************************************
+* Plot
+* Utility for generating star plots
+***************************************************************************
+
+pbc_plotStars.m          Creates star plots from feature sets.
+
+		         
