@@ -50,6 +50,7 @@ def match_centroids(all_codebooks):
 
     for i in range(num_codebooks):
         all_costs = get_matching_costs( all_codebooks, i )
+        all_costs = all_costs**2 # Braun et al work on squared distances
         this_sum_cost = np.sum(all_costs)
         if this_sum_cost < min_sum_cost:
             min_cost_idx = i
