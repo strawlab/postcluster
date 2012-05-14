@@ -16,4 +16,10 @@ The original source code given by Braun et al is included, as is a
 Python implementation of the same quality metrics. Included unit tests
 ensure that the two implementations produce the same results.
 
-The library is open sourced, and is licensed under the GPL v 2 or later.
+Additionally, the fast K-Kmeans library `described by Kanungo, Mount,
+Netanyahu, Piatko, Silverman, and Wu
+<http://www.cs.umd.edu/~mount/Projects/KMeans/>`_ is included with
+customizations for calling directly from Python.
+
+The postcluster library is open sourced, and is licensed under the GPL
+v 2 or later.
