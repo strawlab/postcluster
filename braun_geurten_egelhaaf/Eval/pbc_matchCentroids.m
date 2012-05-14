@@ -30,7 +30,6 @@ function [mCentroids mCosts minDistEl maxDistEl mCentDist]=pbc_matchCentroids(C)
 [num_cent num_feat num_clust] = size(C);
 minSumCost = 1e6;
 maxSumCost = -1;
-sumCost = 0;
 
 % Do for all sets of centroids: Calculate distances/matching costs and 
 % matched centroids from other sets. Determine and store the set that 
@@ -95,7 +94,7 @@ for i =1:num_centroids
     for j=1:num_centroids
         diff_C = (centroids2(j,:) -centroids(i,:));
         diff_C = sum(diff_C.^2);
-        dist_mat(i,j) = diff_C;
+        dist_mat(i,j) = sqrt(diff_C);
     end
 end
 
