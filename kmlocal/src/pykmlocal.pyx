@@ -110,24 +110,3 @@ def kmeans( data, k):
     codebook = kml.run()
     distortion = np.nan # XXX not implemented yet
     return codebook, distortion
-
-def test_kmeans():
-    data = np.array([[0, 0],
-                     [0, 1],
-                     [1, 1],
-                     [-1, 1],
-
-                     [10,10],
-                     [11,10],
-                     [10,11],
-                     [10,10.1],
-
-                     [-100, -100],
-                     [-101, -100],
-                     [-102, -100],
-                     ],
-                    dtype=np.float)
-    codebook, dist = kmeans( data, 3)
-    print 'codebook'
-    print codebook
-
