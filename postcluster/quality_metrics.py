@@ -107,6 +107,7 @@ def test_get_matching_costs():
     for ai in actual:
         assert my_allclose( ai, 1.0 )
 
+@memory.cache
 def distance_table( A, B ):
      assert A.shape == B.shape
      n = len(A)
@@ -116,6 +117,7 @@ def distance_table( A, B ):
              dist[i,j] = np.sqrt(np.sum((A[i]-B[j])**2))
      return dist
 
+@memory.cache
 def minimum_cost(in_matrix):
     """use Hungarian algorithm to find minimum cost"""
     if 1:
