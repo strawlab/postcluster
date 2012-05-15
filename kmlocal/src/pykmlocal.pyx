@@ -75,10 +75,11 @@ cdef class KMLocal:
         cdef KMfilterCenters* ctrs
         ctrs = new KMfilterCenters( self.k, deref(self.dataPts))
 
-        cdef KMterm *term = new KMterm(100, 0, 0, 0,    #  run for 100 stages
+        # allocate termination critereon
+        cdef KMterm *term = new KMterm(1, 0, 0, 0,    #  run for 1 stage (maxTotStage)
                                   0.10,			#  min consec RDL
                                   0.10,			#  min accum RDL
-                                  3,			#  max run stages
+                                  100,			#  max run stages
                                   0.50,			#  init. prob. of acceptance
                                   10,			#  temp. run length
                                   0.95)			#  temp. reduction factor
