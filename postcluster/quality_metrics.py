@@ -2,6 +2,13 @@ import numpy as np
 from scipy.cluster.vq import vq
 import munkres # from http://pypi.python.org/pypi/munkres/ (tested with 1.0.5.4)
 
+# cache results (see http://packages.python.org/joblib/memory.html )
+from tempfile import mkdtemp
+from joblib import Memory
+cachedir = mkdtemp()
+memory = Memory(cachedir=cachedir, verbose=0)
+
+@memory.cache
 def get_summed_inner_distance( codebook, data ):
     """calculate per-centroid sums of inner cluster distances"""
     code, dist = vq( data, codebook)
