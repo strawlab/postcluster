@@ -2,6 +2,11 @@ import os, sys, subprocess
 from distutils.core import setup, Extension
 from Cython.Distutils import build_ext
 
+if 'setuptools.extension' in sys.modules:
+    raise RuntimeError("setuptools monkeypatches distutils.core.Extension "
+                       "so that Cython won't emit C++ files. "
+                       "Solution: re-run without setuptools. Aborting.")
+
 setup(name='pykmlocal',
       version='1.7.2',
       cmdclass={'build_ext': build_ext},
