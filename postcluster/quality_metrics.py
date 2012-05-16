@@ -10,14 +10,14 @@ memory = Memory(cachedir=cachedir, verbose=0)
 
 @memory.cache
 def get_summed_inner_distance( codebook, data ):
-    """calculate per-centroid sums of inner cluster distances"""
+    """calculate per-centroid sums of inner cluster squared distances"""
     code, dist = vq( data, codebook)
     k = len(codebook)
     sumd =  np.empty( (k,), dtype=np.float )
     count = np.empty( (k,), dtype=np.int )
     for i in range(k):
         cond = code==i
-        sumd[i] = np.sum(dist[cond])
+        sumd[i] = np.sum(dist[cond]**2)
         count[i] = np.sum( cond )
     return sumd, count
 
@@ -37,7 +37,7 @@ def test_summed_inner_distance():
     result, count = \
             get_summed_inner_distance( np.array(codebook), np.array(data) )
     assert my_allclose( count, [3, 4] )
-    assert my_allclose( result, [3.0, 13] )
+    assert my_allclose( result, [3.0, 103] )
 
 def my_allclose(a,b):
     a = np.array(a)

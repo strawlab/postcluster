@@ -108,5 +108,4 @@ cdef class KMLocal:
 def kmeans( data, k):
     kml = KMLocal( data, k )
     codebook = kml.run()
-    distortion = np.nan # XXX not implemented yet
-    return codebook, distortion
+    return codebook
