@@ -43,6 +43,7 @@ cdef extern from "KMfilterCenters.h":
         int getK()
         int getDim()
         KMcenter get(int)
+        double *getDists()
 
 cdef class KMLocal:
     cdef KMdata* dataPts
@@ -73,6 +74,7 @@ cdef class KMLocal:
     def run(self, algorithm='lloyds'):
         # allocate new centers
         cdef KMfilterCenters* ctrs
+        cdef double* dists
         ctrs = new KMfilterCenters( self.k, deref(self.dataPts))
 
         # allocate termination critereon
@@ -103,10 +105,13 @@ cdef class KMLocal:
                 for j in range( ctrs.getDim() ):
                     codebook[i,j] = c[j]
 
-        return codebook
+        dists = ctrs.getDists()
+        np_dists = np.empty( (ctrs.getK(),), dtype=np.float )
+        for i in range( ctrs.getK() ):
+             np_dists[i] = dists[i]
+        return codebook, np_dists
 
 def kmeans( data, k):
     kml = KMLocal( data, k )
-    codebook = kml.run()
-    distortion = np.nan # XXX not implemented yet
+    codebook, distortion = kml.run()
     return codebook, distortion
